@@ -1,0 +1,30 @@
+import type { User } from "../generated/prisma/index.js";
+import { email, z } from "zod";
+
+export interface CreateUserDto {
+	full_name:string, 
+	email: string, 
+	password: string,
+	birth_date: string,
+}
+
+const dateToString = () => 
+	z.preprocess(
+		(value) => (value instanceof Date ? value.toISOString() : value),
+		z.string().datetime()
+	)
+
+
+export const UserResponseSchema = z.object({
+	id: z.string(),
+	email: z.string(),
+	full_name: z.string(),
+	birth_date: dateToString(),
+	role: z.string(),
+	is_active: z.boolean(),
+	created_at: dateToString(),
+	updated_at: dateToString(),
+	
+}).strip();
+
+export type UserResponse = z.infer<typeof UserResponseSchema>;

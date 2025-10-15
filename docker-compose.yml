@@ -3,8 +3,8 @@ services:
     image: postgres:16
     container_name: "em_postgres"
     environment:
-      POSTGRES_USER: postgres,
-      POSTGRES_PASSWORD: postgres,
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
       POSTGRES_DB: em
     ports:
       - "5432:5432"
