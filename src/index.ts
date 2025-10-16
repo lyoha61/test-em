@@ -1,15 +1,21 @@
 import e from "express";
 import { userRouter } from "./routes/user.js";
-import { requestLogger } from "./middlewares/request-logger.js";
+import { requestLogger } from "./middlewares/requestLogger.js";
+import { connectDatabase } from "./db/client.js";
+import { authRouter } from "./routes/auth.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
 
+await connectDatabase();
 const app = e();
 const port = 3000;
 
 app.use(e.json());
 app.use(requestLogger);
 
-app.use("/users", userRouter);
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/auth", authRouter);
 
+app.use(errorHandler);
 app.listen(port, () => {
 	console.log(`Server started on http://localhost:${port}`);
 })

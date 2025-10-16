@@ -9,10 +9,4 @@ export class UserController {
 		const formattedUser = UserResponseSchema.parse(user);
 		return formattedUser;
 	}
-
-	async create(body: CreateUserDto): Promise<UserResponse> {
-		const user = await this.userService.create(body);
-		const formattedUser = UserResponseSchema.parse(user);
-		return formattedUser;
-	}
 }

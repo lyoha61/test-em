@@ -1,18 +1,12 @@
 import { Router, type Request, type Response } from "express";
 import { UserController } from "../controllers/user.js";
 import { UserService } from "../services/user.js";
-import { connectDatabase, prisma } from "../db/client.js";
+import { prisma } from "../db/client.js";
 
-await connectDatabase();
 const userService = new UserService(prisma)
 const userController = new UserController(userService);
-export const userRouter = Router();
 
-userRouter.post('/register', async (req: Request, res: Response) => {
-	console.log(req.body)
-	const user = await userController.create(req.body);
-	res.json(user);
-});
+export const userRouter = Router();
 
 userRouter.get('/:id', async (req: Request, res: Response) => {
 	if (!req.params.id) {
