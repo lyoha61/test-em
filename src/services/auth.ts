@@ -36,8 +36,6 @@ export class AuthService {
 	}
 
 	protected signToken(payload: object, secret: Secret, options: SignOptions) {
-
-
 		return jwt.sign(payload, secret, options);
 	}
 
@@ -81,7 +79,7 @@ export class AuthService {
 			throw new HttpError(400, 'Invalid inputs data');
 		};
 
-		const accessToken = this.signToken({sub: user.id}, this.accessSecret, {expiresIn: this.accessExp})
+		const accessToken = this.signToken({sub: user.id, role: user.role}, this.accessSecret, {expiresIn: this.accessExp})
 		const refreshToken = this.signToken({sub: user.id}, this.refreshSecret, {expiresIn: this.refreshExp})
 
 		return {access_token: accessToken, refresh_token: refreshToken, exp: this.accessExp};

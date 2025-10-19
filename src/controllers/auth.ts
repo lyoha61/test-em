@@ -6,9 +6,9 @@ export class AuthController {
 	constructor(private readonly authService: AuthService) {}
 
 	async register(body: CreateUserDto): Promise<UserResponse> {
-			const user = await this.authService.register(body);
-			const formattedUser = UserResponseSchema.parse(user);
-			return formattedUser;
+		const user = await this.authService.register(body);
+		const formattedUser = UserResponseSchema.parse(user);
+		return formattedUser;
 	}
 
 	async login(body: LoginUserDto): Promise<TokensResponse> {

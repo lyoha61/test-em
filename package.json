@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc && cp -r src/generated dist/generated",
-    "dev": "concurrently \"tsc --watch\" \"nodemon dist/index.js\""
+    "dev": "concurrently \"tsc --watch\" \"nodemon dist/index.js\"",
+    "debug": "concurrently \"tsc --watch\" \"nodemon --inspect=9229 dist/index.js\""
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
