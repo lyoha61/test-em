@@ -11,11 +11,15 @@ export const userRouter = Router();
 
 userRouter.get('/', async (req: Request, res: Response) => {
 	const users = await userController.getUsers(req);
-	res.json(users)
+	res.json(users);
 })
 
 userRouter.get('/:id', async (req: Request<UserParams>, res: Response) => {
 	const user = await userController.getUser(req, req.params.id);
-	res.json(user)
+	res.json(user);
 });
 
+userRouter.patch('/:id/block', async (req: Request<UserParams>, res: Response) => {
+	const user = await userController.blockUser(req, req.params.id);
+	res.json(user);
+})

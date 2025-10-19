@@ -5,7 +5,7 @@ import { connectDatabase } from "./db/client.js";
 import { authRouter } from "./routes/auth.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import { authorize } from "./middlewares/authorize.js";
-import { UserRole } from "./enums/UserRole.js";
+import { responseLogger } from "./middlewares/responseLogger.js";
 
 await connectDatabase();
 const app = e();
@@ -13,6 +13,7 @@ const port = 3000;
 
 app.use(e.json());
 app.use(requestLogger);
+app.use(responseLogger);
 
 app.use("/api/v1/users", authorize(), userRouter);
 app.use("/api/v1/auth", authRouter);

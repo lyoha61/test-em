@@ -1,6 +1,5 @@
 import type { Request, Response, NextFunction } from "express"
 import jwt from "jsonwebtoken";
-import type { UserRole } from "../enums/UserRole.js";
 
 export function authorize() {
 	return (req: Request, res: Response, next: NextFunction) => {

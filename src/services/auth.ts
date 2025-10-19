@@ -1,6 +1,5 @@
 import ms, { type StringValue } from "ms";
-import type { LoginUserDto, TokensResponse } from "../dtos/auth.js";
-import type { CreateUserDto } from "../dtos/user.js";
+import type { CreateUserDto, LoginUserDto, TokensResponse } from "../dtos/auth.js";
 import type { PrismaClient, User } from "../generated/prisma/index.js";
 import bcrypt from "bcrypt";
 import jwt, { type Secret, type SignOptions} from "jsonwebtoken";

@@ -1,12 +1,4 @@
-import type { User } from "../generated/prisma/index.js";
-import { email, z } from "zod";
-
-export interface CreateUserDto {
-	full_name:string, 
-	email: string, 
-	password: string,
-	birth_date: string,
-}
+import { z } from "zod";
 
 const dateToString = () => 
 	z.preprocess(
