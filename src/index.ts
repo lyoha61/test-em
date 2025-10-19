@@ -14,7 +14,7 @@ const port = 3000;
 app.use(e.json());
 app.use(requestLogger);
 
-app.use("/api/v1/users", authorize([UserRole.ADMIN]), userRouter);
+app.use("/api/v1/users", authorize(), userRouter);
 app.use("/api/v1/auth", authRouter);
 
 app.use(errorHandler);

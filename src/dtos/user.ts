@@ -24,7 +24,11 @@ export const UserResponseSchema = z.object({
 	is_active: z.boolean(),
 	created_at: dateToString(),
 	updated_at: dateToString(),
-	
 }).strip();
 
+export const UsersResponseSchema = z.object({
+	users: z.array(UserResponseSchema)
+})
+
 export type UserResponse = z.infer<typeof UserResponseSchema>;
+export type UsersResponse = z.infer<typeof UsersResponseSchema>;
