@@ -1,6 +1,6 @@
 import ms, { type StringValue } from "ms";
 import type { CreateUserDto, LoginUserDto, TokensResponse } from "../dtos/auth.js";
-import type { PrismaClient, User } from "../generated/prisma/index.js";
+import { PrismaClient, type User } from "@prisma/client";
 import bcrypt from "bcrypt";
 import jwt, { type Secret, type SignOptions} from "jsonwebtoken";
 import { HttpError } from "../errors/HttpError.js";
@@ -49,15 +49,12 @@ export class AuthService {
 
 	async register(data: CreateUserDto): Promise<User> {
 		const hashedPassword = await this.hashPassword(data.password);
-		const [day, month, year] = data.birth_date.split(".");
-	
-		const birthDate = new Date(`${year}-${month}-${day}`);
-
+		
 		const user = await this.prisma.user.create({
 			data: {
 				full_name: data.full_name,
 				email: data.email,
-				birth_date: birthDate,
+				birth_date: data.birth_date,
 				password: hashedPassword
 			}
 		})

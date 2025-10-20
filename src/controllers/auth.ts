@@ -1,6 +1,6 @@
 import type { CreateUserDto, LoginUserDto, TokensResponse } from "../dtos/auth.js";
 import type { AuthService } from "../services/auth.js";
-import { UserResponseSchema, type UserResponse } from "../shemas/user.js";
+import { UserResponseSchema, type UserResponse } from "../schemes/user.js";
 
 export class AuthController {
 	constructor(private readonly authService: AuthService) {}

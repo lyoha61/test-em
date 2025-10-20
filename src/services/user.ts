@@ -1,7 +1,7 @@
 import type { PrismaClient } from "@prisma/client";
-import type { User } from "../generated/prisma/index.js";
-import { PrismaClientKnownRequestError } from "../generated/prisma/runtime/library.js";
+import type { User } from "@prisma/client";
 import { HttpError } from "../errors/HttpError.js";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 
 export class UserService {
 	constructor(private readonly prisma: PrismaClient) {}
@@ -16,7 +16,7 @@ export class UserService {
 
 	async getUsers(excludeUserId?: string): Promise<User[]> {
 		const users = await this.prisma.user.findMany({
-			where: { id: { not: excludeUserId } }
+			where: excludeUserId ? { id: { not: excludeUserId } } : {}
 		});
 		return users;
 	}

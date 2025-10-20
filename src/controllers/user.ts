@@ -2,7 +2,7 @@ import type { UserService } from "../services/user.js";
 import type { Request } from "express";
 import { UserRole } from "../enums/UserRole.js";
 import { HttpError } from "../errors/HttpError.js";
-import { UserResponseSchema, UsersResponseSchema, type UserResponse, type UsersResponse } from "../shemas/user.js";
+import { UserResponseSchema, UsersResponseSchema, type UserResponse, type UsersResponse } from "../schemes/user.js";
 
 export class UserController {
 	constructor (private readonly userService: UserService) {}

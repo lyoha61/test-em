@@ -1,11 +1,4 @@
 node_modules
 dist
 .env
-
-/src/generated/prisma
-prisma/*.js
-prisma/*.js.map
-prisma/*.d.ts
-prisma/*.d.ts.map
-
 .vscode

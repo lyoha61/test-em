@@ -1,4 +1,4 @@
-import type { loginShema, registerShema } from "../shemas/auth.js";
+import type { loginShema, registerShema } from "../schemes/auth.js";
 import { z } from "zod";
 
 export type CreateUserDto = z.infer<typeof registerShema>
